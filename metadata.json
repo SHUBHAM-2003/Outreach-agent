@@ -1,0 +1,6 @@
+{
+  "name": "Agency Outreach Agent",
+  "description": "Server-side AI outreach workspace for agency lead management, Zoho Mail campaigns, inbox classification, and approval-gated sending.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
