@@ -28,6 +28,8 @@ import { InboxPanel } from './components/InboxPanel.tsx';
 import { LeadsPanel } from './components/LeadsPanel.tsx';
 import { LoginScreen } from './components/LoginScreen.tsx';
 import { MemoryPanel } from './components/MemoryPanel.tsx';
+import { OfflineIndicator } from './components/OfflineIndicator.tsx';
+import { PWAInstallButton } from './components/PWAInstallButton.tsx';
 import { SettingsPanel } from './components/SettingsPanel.tsx';
 import { ZohoSetupPage } from './components/ZohoSetupPage.tsx';
 
@@ -283,12 +285,15 @@ export default function App() {
 
   if (!authState?.authenticated) {
     return (
-      <LoginScreen
-        setupRequired={Boolean(authState?.setupRequired)}
-        onAuthenticated={() => {
-          void checkAuth();
-        }}
-      />
+      <>
+        <LoginScreen
+          setupRequired={Boolean(authState?.setupRequired)}
+          onAuthenticated={() => {
+            void checkAuth();
+          }}
+        />
+        <OfflineIndicator />
+      </>
     );
   }
 
@@ -380,7 +385,8 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
+            <PWAInstallButton compact />
             {activeTab !== 'chat' && (
               <button
                 type="button"
@@ -574,6 +580,8 @@ export default function App() {
           </div>
         </div>
       )}
+
+      <OfflineIndicator />
     </div>
   );
 }
